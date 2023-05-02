@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{%block titie_block%}Venkatesh's Blog {%endblock%}
+
+
+{%block content%}
+
+<h1>Venkatesh's BLOG</h1>
+{%for post in post_list%}
+<a href="{{post.get_absolute_url}}">
+    <h2>{{post.title}}</h2>
+</a>
+published on {{post.publish}} by {{post.author|title}}
+{{post.body | truncatewords:30 |linebreaks}}
+{%endfor%}
+{%include 'blog/pagination.html' with page=post_list%}
+{%endblock%}
